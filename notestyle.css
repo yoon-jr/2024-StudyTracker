@@ -1,0 +1,69 @@
+/* 모달 스타일 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* 우측 하단으로 카테고리 추가 버튼 이동 */
+#add-category-btn {
+  position: fixed;
+  bottom: 20px; /* 화면 하단에서 20px 띄움 */
+  right: 20px; /* 화면 오른쪽에서 20px 띄움 */
+  width: 80px; /* 버튼 너비 증가 */
+  height: 80px; /* 버튼 높이 증가 */
+  border-radius: 20px; /* 둥근 네모 모양 */
+  background-color: #333; /* 버튼 배경색 */
+  color: white;
+  font-size: 1rem; /* 버튼 글씨 크기 증가 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-category-btn:hover {
+  background-color: #555; /* 버튼 hover 시 색상 변경 */
+}
+
+/* 카테고리 항목 클릭 가능 모양 */
+.category-item {
+  cursor: pointer; /* 클릭 가능한 모양으로 변경 */
+}
+
+.category-item:hover {
+  background-color: #f0f0f0; /* 마우스를 올렸을 때 배경색 변경 (선택 사항) */
+}

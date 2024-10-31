@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mathematics Notes</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="notestyle.css" />
+    <style>
+      /* inline CSS for specific styling of math.html */
+      #notes-section {
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 800px; /* Increased width */
+        max-width: 90vw; /* Responsive max-width */
+        margin: 2rem auto; /* Centering and margin for spacing */
+      }
+      #note-list {
+        list-style: none;
+        padding: 0;
+      }
+      .note-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer; /* Pointer cursor to indicate clickable item */
+      }
+      .note-item span {
+        font-weight: bold;
+      }
+      .note-item .note-title {
+        flex: 1;
+        margin-right: 1rem;
+      }
+      .note-item .note-date {
+        font-size: 0.9rem;
+        color: #666;
+      }
+      .note-modal-content,
+      .view-note-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 600px; /* Increased width */
+        max-width: 90vw; /* Responsive max-width */
+        padding: 2rem; /* Increased padding */
+      }
+      .note-modal-content label,
+      .view-note-content label {
+        font-weight: bold;
+      }
+      .note-modal-content input,
+      .note-modal-content textarea,
+      .view-note-content p {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+      }
+      .note-modal-content button {
+        padding: 0.5rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 0.5rem;
+      }
+      .note-modal-content button:hover {
+        background-color: #555;
+      }
+      #add-note-btn {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+      #add-note-btn:hover {
+        background-color: #555;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+      .view-note-content {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Mathematics Notes</h1>
+    </header>
+
+    <main>
+      <section id="notes-section">
+        <h2>Note List</h2>
+        <ul id="note-list">
+          <!-- 노트 항목은 동적으로 추가됩니다. -->
+        </ul>
+      </section>
+    </main>
+
+    <!-- 노트 작성 버튼 -->
+    <button id="add-note-btn">+ Add Note</button>
+
+    <!-- 노트 작성 모달 -->
+    <div id="note-modal" class="modal hidden">
+      <div class="modal-content note-modal-content">
+        <label for="note-title">Note Title:</label>
+        <input type="text" id="note-title" />
+        <label for="note-content">Note Content:</label>
+        <textarea id="note-content" rows="6"></textarea>
+        <button id="save-note">Save</button>
+        <button id="cancel-note">Cancel</button>
+      </div>
+    </div>
+
+    <!-- 노트 보기 모달 -->
+    <div id="view-note-modal" class="modal hidden">
+      <div class="modal-content view-note-content">
+        <h2>Note Details</h2>
+        <p id="view-note-title"></p>
+        <p id="view-note-content"></p>
+        <button id="close-view-note">Close</button>
+      </div>
+    </div>
+
+    <script>
+      // 노트 작성 버튼 클릭 시 모달 열기
+      document.getElementById("add-note-btn").addEventListener("click", () => {
+        document.getElementById("note-modal").classList.remove("hidden");
+      });
+
+      // 노트 저장 버튼 클릭 시
+      document.getElementById("save-note").addEventListener("click", () => {
+        const title = document.getElementById("note-title").value.trim();
+        const content = document.getElementById("note-content").value.trim();
+
+        if (title && content) {
+          const noteList = document.getElementById("note-list");
+          const noteDate = new Date().toISOString().split("T")[0]; // 현재 날짜
+          const newNoteItem = document.createElement("li");
+          newNoteItem.classList.add("note-item");
+          newNoteItem.innerHTML = `
+            <span class="note-title">${title}</span>
+            <span class="note-date">${noteDate}</span>
+          `;
+          newNoteItem.dataset.content = content; // Note content for viewing
+          noteList.appendChild(newNoteItem);
+
+          // 입력 필드 초기화 및 모달 닫기
+          document.getElementById("note-title").value = "";
+          document.getElementById("note-content").value = "";
+          document.getElementById("note-modal").classList.add("hidden");
+        }
+      });
+
+      // 취소 버튼 클릭 시 모달 닫기
+      document.getElementById("cancel-note").addEventListener("click", () => {
+        document.getElementById("note-modal").classList.add("hidden");
+        document.getElementById("note-title").value = "";
+        document.getElementById("note-content").value = "";
+      });
+
+      // 노트 항목 클릭 시 내용 보기 모달 열기
+      document.getElementById("note-list").addEventListener("click", (e) => {
+        if (e.target && e.target.matches(".note-item")) {
+          const noteTitle = e.target.querySelector(".note-title").textContent;
+          const noteContent = e.target.dataset.content;
+
+          document.getElementById("view-note-title").textContent = noteTitle;
+          document.getElementById("view-note-content").textContent =
+            noteContent;
+          document.getElementById("view-note-modal").classList.remove("hidden");
+        }
+      });
+
+      // 노트 보기 모달의 닫기 버튼 클릭 시 모달 닫기
+      document
+        .getElementById("close-view-note")
+        .addEventListener("click", () => {
+          document.getElementById("view-note-modal").classList.add("hidden");
+        });
+    </script>
+  </body>
+</html>
