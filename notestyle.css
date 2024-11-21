@@ -5,65 +5,94 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4); /* 배경 투명도 조정 */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
   text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+  animation: fadeIn 0.3s ease-out; /* 모달 애니메이션 */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .hidden {
   display: none;
 }
 
+/* 버튼 스타일 */
 button {
-  padding: 0.5rem 1rem;
-  background-color: #333;
-  color: #fff;
+  padding: 0.8rem 1.5rem;
+  background-color: #133e87; /* 버튼 기본 배경색 */
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #555;
+  background-color: #608bc1; /* 버튼 hover 시 색상 */
+  transform: scale(1.05); /* 버튼 크기 증가 */
 }
 
-/* 우측 하단으로 카테고리 추가 버튼 이동 */
+/* 우측 하단 카테고리 추가 버튼 */
 #add-category-btn {
   position: fixed;
-  bottom: 20px; /* 화면 하단에서 20px 띄움 */
-  right: 20px; /* 화면 오른쪽에서 20px 띄움 */
-  width: 80px; /* 버튼 너비 증가 */
-  height: 80px; /* 버튼 높이 증가 */
-  border-radius: 20px; /* 둥근 네모 모양 */
-  background-color: #333; /* 버튼 배경색 */
+  bottom: 30px; /* 하단에서 30px 띄움 */
+  right: 30px; /* 오른쪽에서 30px 띄움 */
+  width: 90px; /* 버튼 크기 증가 */
+  height: 90px;
+  border-radius: 50%; /* 원형 버튼 */
+  background-color: #133e87; /* 버튼 기본 배경색 */
   color: white;
-  font-size: 1rem; /* 버튼 글씨 크기 증가 */
+  font-size: 1.5rem; /* 글씨 크기 증가 */
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 #add-category-btn:hover {
-  background-color: #555; /* 버튼 hover 시 색상 변경 */
+  background-color: #608bc1; /* 버튼 hover 색상 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* 카테고리 항목 클릭 가능 모양 */
+/* 카테고리 항목 */
 .category-item {
-  cursor: pointer; /* 클릭 가능한 모양으로 변경 */
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .category-item:hover {
-  background-color: #f0f0f0; /* 마우스를 올렸을 때 배경색 변경 (선택 사항) */
+  background-color: #cbdceb; /* hover 시 배경색 변경 */
+  transform: scale(1.05); /* 항목 확대 효과 */
+}
+
+/* 선택된 카테고리 항목 스타일 */
+.category-item.selected {
+  background-color: #133e87;
+  color: white; /* 선택된 항목 색상 변경 */
+  font-weight: bold;
 }

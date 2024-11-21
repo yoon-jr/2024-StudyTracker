@@ -8,21 +8,43 @@
     <link rel="stylesheet" href="notestyle.css" />
     <style>
       /* inline CSS for specific styling of math.html */
-      #notes-section {
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f3f3e0;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #133e87;
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+      }
+      main {
         padding: 2rem;
-        background-color: #fff;
+        display: flex;
+        justify-content: center; /* 수평 가운데 정렬 */
+        align-items: center; /* 수직 가운데 정렬 */
+        height: calc(100vh - 4rem); /* 헤더 높이 제외 전체 높이 */
+      }
+      section {
+        padding: 2rem;
+        background-color: white;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 800px; /* Increased width */
-        max-width: 90vw; /* Responsive max-width */
-        margin: 2rem auto; /* Centering and margin for spacing */
+        width: 800px;
+        max-width: 90vw;
+      }
+      h2 {
+        margin-top: 0;
+        color: #133e87;
       }
       #note-list {
         list-style: none;
         padding: 0;
       }
       .note-item {
-        background-color: #f9f9f9;
+        background-color: #cbdceb;
         border: 1px solid #ddd;
         border-radius: 5px;
         margin-bottom: 1rem;
@@ -30,7 +52,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        cursor: pointer; /* Pointer cursor to indicate clickable item */
+        cursor: pointer;
       }
       .note-item span {
         font-weight: bold;
@@ -48,41 +70,48 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        width: 600px; /* Increased width */
-        max-width: 90vw; /* Responsive max-width */
-        padding: 2rem; /* Increased padding */
+        width: 600px;
+        max-width: 90vw;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
       .note-modal-content label,
       .view-note-content label {
         font-weight: bold;
+        color: #133e87;
       }
       .note-modal-content input,
       .note-modal-content textarea,
       .view-note-content p {
         padding: 0.5rem;
-        border: 1px solid #ccc;
+        border: 1px solid #cbdceb;
         border-radius: 5px;
         width: 100%;
       }
       .note-modal-content button {
         padding: 0.5rem;
-        background-color: #333;
-        color: #fff;
+        background-color: #133e87;
+        color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         margin-top: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, box-shadow 0.3s;
       }
       .note-modal-content button:hover {
-        background-color: #555;
+        background-color: #608bc1;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       }
       #add-note-btn {
         position: fixed;
         bottom: 1rem;
         right: 1rem;
         padding: 0.5rem 1rem;
-        background-color: #333;
-        color: #fff;
+        background-color: #133e87;
+        color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -90,13 +119,33 @@
         transition: background-color 0.3s, box-shadow 0.3s;
       }
       #add-note-btn:hover {
-        background-color: #555;
+        background-color: #608bc1;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       }
       .view-note-content {
         background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 5px;
+      }
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .hidden {
+        display: none;
       }
     </style>
   </head>

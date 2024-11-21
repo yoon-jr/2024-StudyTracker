@@ -1,15 +1,17 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f3f3e0; /* 부드러운 배경 색상 */
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
 header {
-  background-color: #333;
+  background-color: #133e87; /* 진한 파란색 배경 */
   color: #fff;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 추가 */
 }
 
 main {
@@ -17,50 +19,68 @@ main {
   display: flex;
   justify-content: center; /* 수평 가운데 정렬 */
   align-items: center; /* 수직 가운데 정렬 */
-  height: calc(100vh - 4rem); /* 헤더 높이 제외 전체 높이 */
+  height: calc(100vh - 4.5rem); /* 헤더 높이 제외 전체 높이 */
 }
 
 section {
   background-color: #fff;
   margin-bottom: 2rem;
-  padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 부드럽고 큰 그림자 */
   text-align: center; /* 텍스트 가운데 정렬 */
+  width: 100%;
+  max-width: 600px; /* 최대 너비 제한 */
+  background-image: linear-gradient(
+    145deg,
+    #cbdceb,
+    #608bc1
+  ); /* 그라디언트 배경 */
 }
 
 h2 {
   margin-top: 0;
+  color: #133e87; /* 제목에 진한 파란색 적용 */
 }
 
 #timer {
   font-size: 4rem; /* 시간 표시 크기 조정 */
   margin-bottom: 1rem;
-  color: #333; /* 시간 표시 색상 */
+  color: #133e87; /* 시간 표시 색상 */
+  font-weight: bold; /* 강조된 글씨체 */
 }
 
 input[type="text"] {
-  padding: 0.5rem;
+  padding: 0.75rem;
   margin-right: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid #608bc1;
   border-radius: 5px;
+  background-color: #f3f3e0;
+  font-size: 1rem;
+  transition: border 0.3s ease-in-out;
+}
+
+input[type="text"]:focus {
+  border-color: #133e87; /* 포커스 시 진한 파란색 */
+  outline: none;
 }
 
 button {
-  padding: 0.5rem 1rem;
-  background-color: #333;
+  padding: 0.75rem 1.25rem;
+  background-color: #133e87; /* 버튼 배경색 */
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease-in-out;
 }
 
 button:hover {
-  background-color: #555;
+  background-color: #608bc1; /* 버튼 호버 색상 */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px); /* 버튼 호버 시 부드럽게 위로 이동 */
 }
 
 ul {
@@ -69,12 +89,19 @@ ul {
 }
 
 li {
-  background-color: #eee;
+  background-color: #cbdceb;
   margin-bottom: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 5px;
   display: flex;
   align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #608bc1; /* 항목 호버 시 색상 변경 */
+  color: #fff; /* 텍스트 색상 변경 */
 }
 
 li input[type="checkbox"] {
@@ -82,37 +109,38 @@ li input[type="checkbox"] {
 }
 
 li input[type="checkbox"]:checked + span {
-  color: #888; /* 선택된 항목의 색상 */
-  text-decoration: line-through; /* 선택된 항목에 줄을 그어 완료 표시 */
+  color: #888; /* 선택된 항목 색상 */
+  text-decoration: line-through; /* 완료 항목에 줄 긋기 */
 }
 
-/* 기존 메뉴 버튼 스타일 유지 */
 #main-menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 4rem);
-  background-color: #333;
+  min-height: calc(100vh - 4.5rem);
+  background-color: #133e87; /* 메뉴 배경색 */
   color: #fff;
   padding-top: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #date-time {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   text-align: center;
+  font-weight: bold;
 }
 
 .menu-buttons {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .menu-button {
   background-color: #fff;
-  color: #333;
+  color: #133e87;
   border: none;
   border-radius: 50%;
   width: 150px;
@@ -120,15 +148,17 @@ li input[type="checkbox"]:checked + span {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem;
+  margin: 1rem;
   cursor: pointer;
-  font-size: 1.2rem;
-  text-decoration: none; /* 링크의 기본 밑줄 제거 */
+  font-size: 1.5rem;
+  text-decoration: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 .menu-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: #608bc1; /* 메뉴 버튼 호버 색상 */
+  color: #fff; /* 텍스트 색상 변경 */
 }
