@@ -162,3 +162,23 @@ li input[type="checkbox"]:checked + span {
   background-color: #608bc1; /* 메뉴 버튼 호버 색상 */
   color: #fff; /* 텍스트 색상 변경 */
 }
+
+.home-button {
+  position: fixed;
+  top: 45px;
+  left: 20px;
+  background-color: #133e87;
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease-in-out;
+}
+
+.home-button:hover {
+  background-color: #608bc1;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
